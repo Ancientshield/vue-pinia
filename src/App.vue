@@ -3,15 +3,12 @@
 	import TheWelcome from './components/TheWelcome.vue';
 	import { useCounterStore } from './stores/counter.js';
 	const store = useCounterStore();
-	const clickAdd = () => {
-		store.addCount();
-	};
 </script>
 
 <template>
 	<header>
 		<h1 style="color: white">{{ store.count }}</h1>
-		<button @click="clickAdd">Click+2</button>
+		<button @click="store.addCount()">Click+2</button>
 		<button @click="store.increment()">Click+1</button>
 		<img
 			alt="Vue logo"
