@@ -6,6 +6,7 @@
 <template>
 	<div class="item">
 		<h1 style="color: white">{{ store.count }}</h1>
+		<pre>{{ store.dataList }}</pre>
 		<i>
 			<slot name="icon"></slot>
 		</i>

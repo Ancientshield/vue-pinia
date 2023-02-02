@@ -1,5 +1,6 @@
 import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
+import { axios } from 'Axios';
 
 export const useCounterStore = defineStore('counter', () => {
 	const count = ref(0);
@@ -13,5 +14,16 @@ export const useCounterStore = defineStore('counter', () => {
 		count.value++;
 	}
 
-	return { count, doubleCount, increment, addCount };
+	const dataList = ref([]);
+
+	const axiosAPI = async () => {
+		try {
+			const res = await axios.get('http://172.16.27.167/api/user/info');
+			dataList.value = res.data;
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	return { count, doubleCount, increment, addCount, dataList, axiosAPI };
 });
